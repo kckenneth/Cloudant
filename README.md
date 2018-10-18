@@ -81,6 +81,28 @@ $ curl -X GET 'https://xxxxx-bluemix.cloudant.com' | jq .
 }
 ```
 
+### 1. Create a DB
+```
+$ curl -X PUT -H 'Content-Type: application/json' https://db5a2375-a143-4e1d-93d2-24a547f075e1-bluemix:password@db5a2375-a143-4e1d-93d2-24a547f075e1-bluemix.cloudant.com/crud/
+
+{"ok":true}
+```
+### 2. Updating the DB
+```
+$ curl -d '{"season": "summer", "weather": "usually warm and sunny"}' -X POST https://db5a2375-a143-4e1d-93d2-24a547f075e1-bluemix:password@db5a2375-a143-4e1d-93d2-24a547f075e1-bluemix.cloudant.com/crud/ -H "Content-Type:application/json"
+
+{"ok":true,"id":"ce8a63e4a5665fa4c2c32704f5bb4594","rev":"1-0af5e64fe24d262db237b9f14046f490"}
+```
+### 3. Checking the DB
+```
+$ curl https://db5a2375-a143-4e1d-93d2-24a547f075e1-bluemix:password@db5a2375-a143-4e1d-93d2-24a547f075e1-bluemix.cloudant.com/crud/_all_docs
+
+{"total_rows":1,"offset":0,"rows":[
+{"id":"ce8a63e4a5665fa4c2c32704f5bb4594","key":"ce8a63e4a5665fa4c2c32704f5bb4594","value":{"rev":"1-0af5e64fe24d262db237b9f14046f490"}}
+]}
+```
+
+
 
 
 
