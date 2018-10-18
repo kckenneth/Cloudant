@@ -43,6 +43,65 @@ GET / HTTP/1.1
 * Connection #0 to host db5a2375-a143-4e1d-93d2-24a547f075e1-bluemix.cloudant.com left intact
 ```
 
+Update your `.bash_profile`
+```
+$ vi .bash_profile
+```
+Add the following line at the end with the `Authorization: Basic` you got from the CLI command above. 
+```
+alias acurl="curl -s --proto '=https' -g -H 'Authorization: Basic <output-of-base64>'"
+```
+Now open a new terminal or activate the `.bash_profile` by `$ source .bash_profile`. Now you can check your account information by
+```
+$ acurl -X GET 'https://xxxxx-bluemix.cloudant.com'
+
+{"couchdb":"Welcome","version":"2.1.1","vendor":{"name":"IBM Cloudant","version":"7205","variant":"paas"},"features":["geo","scheduler","iam"]}
+```
+For some reason, I can still get the cloudant by the following command without setting up all those Authorization: Basic and such. 
+```
+$ curl -X GET 'https://xxxxx-bluemix.cloudant.com'
+
+{"couchdb":"Welcome","version":"2.1.1","vendor":{"name":"IBM Cloudant","version":"7205","variant":"paas"},"features":["geo","scheduler","iam"]}
+
+$ curl -X GET 'https://xxxxx-bluemix.cloudant.com' | jq .
+
+{
+  "couchdb": "Welcome",
+  "version": "2.1.1",
+  "vendor": {
+    "name": "IBM Cloudant",
+    "version": "7205",
+    "variant": "paas"
+  },
+  "features": [
+    "geo",
+    "scheduler",
+    "iam"
+  ]
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
